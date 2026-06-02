@@ -1,0 +1,276 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-background: #131313;
+  --color-surface: #131313;
+  --color-surface-container: #20201f;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353535;
+  --color-surface-bright: #393939;
+  --color-surface-dim: #131313;
+  --color-surface-variant: #353535;
+
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #cfc2d6;
+  --color-on-background: #e5e2e1;
+  --color-inverse-surface: #e5e2e1;
+  --color-inverse-on-surface: #313030;
+
+  --color-primary: #ddb7ff;
+  --color-primary-container: #b76dff;
+  --color-primary-fixed: #f0dbff;
+  --color-primary-fixed-dim: #ddb7ff;
+  --color-on-primary: #490080;
+  --color-on-primary-container: #400071;
+  --color-on-primary-fixed: #2c0051;
+  --color-on-primary-fixed-variant: #6900b3;
+  --color-inverse-primary: #842bd2;
+  --color-surface-tint: #ddb7ff;
+
+  --color-secondary: #c9c6c5;
+  --color-secondary-container: #4a4949;
+  --color-secondary-fixed: #e5e2e1;
+  --color-secondary-fixed-dim: #c9c6c5;
+  --color-on-secondary: #313030;
+  --color-on-secondary-container: #bab8b7;
+  --color-on-secondary-fixed: #1c1b1b;
+  --color-on-secondary-fixed-variant: #474646;
+
+  --color-tertiary: #c6c6c7;
+  --color-tertiary-container: #909191;
+  --color-tertiary-fixed: #e2e2e2;
+  --color-tertiary-fixed-dim: #c6c6c7;
+  --color-on-tertiary: #2f3131;
+  --color-on-tertiary-container: #282a2a;
+  --color-on-tertiary-fixed: #1a1c1c;
+  --color-on-tertiary-fixed-variant: #454747;
+
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-on-error: #690005;
+  --color-on-error-container: #ffdad6;
+
+  --color-outline: #988d9f;
+  --color-outline-variant: #4d4354;
+
+  /* Font families */
+  --font-display: "Anton", sans-serif;
+  --font-headline: "Anton", sans-serif;
+  --font-body: "Archivo Narrow", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Spacing */
+  --spacing-stack-lg: 48px;
+  --spacing-stack-md: 24px;
+  --spacing-stack-sm: 8px;
+  --spacing-margin-desktop: 40px;
+  --spacing-margin-mobile: 16px;
+  --spacing-gutter: 16px;
+}
+
+/* ========================
+   BASE STYLES
+   ======================== */
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  background-color: #131313;
+  color: #e2e2e2;
+  overflow-x: hidden;
+  font-family: "Archivo Narrow", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #ddb7ff;
+  color: #0e0e0e;
+}
+
+/* ========================
+   NOISE / FILM GRAIN OVERLAY
+   ======================== */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ========================
+   CUSTOM SCROLLBAR
+   ======================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ddb7ff;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #262626 #0a0a0a;
+}
+
+/* ========================
+   GLASS-DARK CARD UTILITY
+   ======================== */
+
+.glass-dark {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid #262626;
+  transition: border-color 0.4s ease;
+}
+
+.glass-dark:hover {
+  border-color: #ddb7ff;
+}
+
+/* ========================
+   TEXT STROKE UTILITIES
+   ======================== */
+
+.text-stroke {
+  -webkit-text-stroke: 1px #e2e2e2;
+  color: transparent;
+}
+
+.text-stroke-primary {
+  -webkit-text-stroke: 1.5px #ddb7ff;
+  color: transparent;
+}
+
+/* ========================
+   HERO GRADIENT PATTERN
+   ======================== */
+
+.hero-pattern {
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(221, 183, 255, 0.05) 0%,
+    transparent 60%
+  );
+}
+
+/* ========================
+   BACKGROUND DOT GRID
+   ======================== */
+
+.dot-grid {
+  background-image: radial-gradient(
+    circle,
+    rgba(221, 183, 255, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+}
+
+/* ========================
+   KEYFRAME ANIMATIONS
+   ======================== */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-15px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-5px) translateX(-8px);
+  }
+  75% {
+    transform: translateY(-20px) translateX(3px);
+  }
+}
+
+@keyframes particle-drift {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.5;
+  }
+}
+
+/* ========================
+   NAV CHARACTER HOVER
+   ======================== */
+
+.char-hover-link {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  height: 1.2em;
+  line-height: 1.2em;
+}
+
+.char-hover-link span {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.char-hover-link:hover span:first-child {
+  transform: translateY(-100%);
+}
+
+.char-hover-link:hover span:last-child {
+  transform: translateY(-100%);
+}
