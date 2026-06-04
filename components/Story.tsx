@@ -52,6 +52,7 @@ const certifications = [
     title: "Introduction to Data Science",
     date: "Feb 2026",
     credentialId: "a23752b0-9ece-4e53-a435-4141906785de",
+    credentialUrl: "https://www.credly.com/earner/earned/badge/a23752b0-9ece-4e53-a435-4141906785de",
     desc: "Verified ability to explain data analytics challenges and the role of data in AI and Machine Learning.",
     skills: ["Data Analytics", "AI", "Machine Learning", "Data Collection", "Data Validation"],
   },
@@ -60,6 +61,7 @@ const certifications = [
     title: "Ignite Bootcamp – Idea to Plan",
     date: "Dec 2025",
     credentialId: null,
+    credentialUrl: "https://web.certificate.wfglobal.org/en/certificate?certificateId=694cba6f51800d4ecee1ab9e",
     desc: "Completed all 7 milestones. Final score: 4.7/5. Gained exposure to startup planning, business modeling, financial projections, and venture validation.",
     skills: ["Entrepreneurship", "Business Planning", "Startup Development", "Finance", "Lean Canvas", "Design Thinking"],
   },
@@ -68,6 +70,7 @@ const certifications = [
     title: "AWS Technical Essentials",
     date: "Jun 2025",
     credentialId: null,
+    credentialUrl: "https://www.linkedin.com/in/ashish-chandra-acharjee/overlay/Certifications/1234565729/treasury/",
     desc: "Foundational knowledge of cloud computing, EC2, RDS, DynamoDB, IAM, security, storage, and networking on AWS.",
     skills: ["AWS", "Cloud Computing", "EC2", "RDS", "DynamoDB", "IAM"],
   },
@@ -76,6 +79,7 @@ const certifications = [
     title: "Data Science & Analytics",
     date: "Jun 2025",
     credentialId: "5e83e13a-ee96-4f1b-befd-2460fc26973f",
+    credentialUrl: "https://www.life-global.org/certificate/5e83e13a-ee96-4f1b-befd-2460fc26973f",
     desc: "Foundational knowledge in data analysis, statistical concepts, and data-driven decision making. Practical understanding of analytics workflows.",
     skills: ["Data Analysis", "Statistical Analysis", "Data Science"],
   },
@@ -87,6 +91,7 @@ const certifications = [
   //   title: "Certification Title",
   //   date: "Month Year",
   //   credentialId: "optional-id-or-null",
+  //   credentialUrl: "https://...",
   //   desc: "Brief description of what you learned.",
   //   skills: ["Skill1", "Skill2"],
   // },
@@ -249,6 +254,17 @@ export default function Story() {
                     </span>
                   ))}
                 </div>
+                {cert.credentialUrl && (
+                  <a
+                    href={cert.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs tracking-wider text-primary transition-colors hover:text-primary-fixed-dim"
+                  >
+                    SHOW CREDENTIAL
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  </a>
+                )}
               </motion.div>
             ))}
           </motion.div>

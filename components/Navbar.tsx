@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import Logo from "./Logo";
 import { triggerPageTransition } from "./PageTransition";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "WORK", href: "#work" },
@@ -134,27 +135,30 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <a
-          href="#contact"
-          onClick={(e) => handleNavClick(e, "#contact")}
-          className="flex items-center gap-2 border-2 border-primary bg-transparent px-5 py-2.5 font-mono text-xs tracking-[0.05em] text-primary transition-all duration-300 hover:bg-primary hover:text-black md:px-6 md:py-3"
-        >
-          GET IN TOUCH
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
+        {/* CTA Button + Theme Toggle */}
+        <div className="flex items-center gap-3">
+          <a
+            href="#contact"
+            onClick={(e) => handleNavClick(e, "#contact")}
+            className="flex items-center gap-2 border-2 border-primary bg-transparent px-5 py-2.5 font-mono text-xs tracking-[0.05em] text-primary transition-all duration-300 hover:bg-primary hover:text-black md:px-6 md:py-3"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
-        </a>
+            GET IN TOUCH
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+          <ThemeToggle />
+        </div>
       </div>
     </motion.nav>
   );

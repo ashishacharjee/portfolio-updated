@@ -86,6 +86,7 @@ body {
   font-family: "Archivo Narrow", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 ::selection {
@@ -274,3 +275,368 @@ body::after {
 .char-hover-link:hover span:last-child {
   transform: translateY(-100%);
 }
+
+/* ========================
+   THEME TOGGLE COMPONENT
+   ======================== */
+
+.theme-toggle-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid #ddb7ff;
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+.theme-toggle-track {
+  position: relative;
+  width: 58px;
+  height: 28px;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.star-1 { top: 6px; left: 10px; }
+.star-2 { top: 12px; left: 18px; width: 1.5px; height: 1.5px; }
+.star-3 { top: 18px; left: 8px; width: 1.5px; height: 1.5px; }
+.star-4 { top: 8px; left: 24px; }
+.star-5 { top: 20px; left: 20px; width: 1px; height: 1px; }
+
+.theme-toggle-cloud {
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.cloud-1 {
+  width: 20px;
+  height: 10px;
+  bottom: 2px;
+  left: 6px;
+  border-radius: 10px;
+}
+
+.cloud-2 {
+  width: 14px;
+  height: 10px;
+  bottom: 6px;
+  left: 14px;
+  border-radius: 8px;
+}
+
+.cloud-3 {
+  width: 16px;
+  height: 8px;
+  bottom: 1px;
+  left: 18px;
+  border-radius: 8px;
+}
+
+.theme-toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.crater {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(150, 155, 165, 0.6);
+}
+
+.crater-1 { width: 6px; height: 6px; top: 4px; left: 4px; }
+.crater-2 { width: 4px; height: 4px; top: 12px; left: 10px; }
+.crater-3 { width: 3px; height: 3px; top: 6px; left: 13px; }
+
+.sun-rays {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sun-ray {
+  position: absolute;
+  width: 2px;
+  height: 4px;
+  background: #f5c842;
+  border-radius: 1px;
+  top: 50%;
+  left: 50%;
+  margin-left: -1px;
+  margin-top: -2px;
+  transform-origin: center center;
+}
+
+.theme-toggle-btn:hover .theme-toggle-track {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 0 12px rgba(221, 183, 255, 0.3);
+}
+
+/* ===================================================
+   LIGHT MODE — colors from reference HTML (Material 3)
+   =================================================== */
+
+html.light {
+  --color-background: #f8f9fa;
+  --color-surface: #f8f9fa;
+  --color-surface-container: #edeeef;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-highest: #e1e3e4;
+  --color-surface-bright: #f8f9fa;
+  --color-surface-dim: #d9dadb;
+  --color-surface-variant: #e1e3e4;
+
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #4d4354;
+  --color-on-background: #191c1d;
+  --color-inverse-surface: #2e3132;
+  --color-inverse-on-surface: #f0f1f2;
+
+  --color-primary: #8127cf;
+  --color-primary-container: #9c48ea;
+  --color-primary-fixed: #f0dbff;
+  --color-primary-fixed-dim: #ddb7ff;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #fffbff;
+  --color-on-primary-fixed: #2c0051;
+  --color-on-primary-fixed-variant: #6900b3;
+  --color-inverse-primary: #ddb7ff;
+  --color-surface-tint: #842bd2;
+
+  --color-secondary: #5f5e5e;
+  --color-secondary-container: #e2dfde;
+  --color-secondary-fixed: #e5e2e1;
+  --color-secondary-fixed-dim: #c8c6c5;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #636262;
+  --color-on-secondary-fixed: #1c1b1b;
+  --color-on-secondary-fixed-variant: #474746;
+
+  --color-tertiary: #4d5d73;
+  --color-tertiary-container: #66768d;
+  --color-tertiary-fixed: #d3e4fe;
+  --color-tertiary-fixed-dim: #b7c8e1;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #fdfcff;
+  --color-on-tertiary-fixed: #0b1c30;
+  --color-on-tertiary-fixed-variant: #38485d;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --color-outline: #7e7385;
+  --color-outline-variant: #cfc2d6;
+}
+
+/* Body */
+html.light body {
+  background-color: #f8f9fa;
+  color: #191c1d;
+}
+
+/* Selection */
+html.light ::selection {
+  background-color: #9c48ea;
+  color: #ffffff;
+}
+
+/* Scrollbar */
+html.light ::-webkit-scrollbar-track {
+  background: #f3f4f5;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #d9dadb;
+  border-radius: 4px;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #8127cf;
+}
+
+html.light {
+  scrollbar-color: #d9dadb #f3f4f5;
+}
+
+/* Glass card — frosted glass in light mode (semi-transparent so Vanta shows through) */
+html.light .glass-dark {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(129, 39, 207, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+html.light .glass-dark:hover {
+  border-color: #8127cf;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(129, 39, 207, 0.08);
+}
+
+/* Text stroke */
+html.light .text-stroke {
+  -webkit-text-stroke: 1px #191c1d;
+}
+
+html.light .text-stroke-primary {
+  -webkit-text-stroke: 1.5px #8127cf;
+}
+
+/* Hero gradient */
+html.light .hero-pattern {
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(129, 39, 207, 0.04) 0%,
+    transparent 60%
+  );
+}
+
+/* Dot grid */
+html.light .dot-grid {
+  background-image: radial-gradient(
+    circle,
+    rgba(129, 39, 207, 0.06) 1px,
+    transparent 1px
+  );
+}
+
+/* Noise overlay — subtle in light mode */
+html.light body::after {
+  opacity: 0.012;
+  mix-blend-mode: multiply;
+}
+
+/* Hero image gradient overlay — reduce the bright wash over profile picture */
+html.light .from-background {
+  --tw-gradient-from: rgba(248, 249, 250, 0.3);
+}
+
+/* ==================================================
+   VANTA BACKGROUNDS — Vanta components handle their own
+   light-mode colors natively. No CSS hacks needed.
+   ================================================== */
+
+/* ==================================================
+   TAILWIND UTILITY OVERRIDES FOR LIGHT MODE
+   ================================================== */
+
+/* text-white headings → dark text on light backgrounds */
+html.light .text-white {
+  color: #191c1d;
+}
+
+/* Make scrolling marquee text darker in light mode */
+html.light .opacity-\[0\.18\] {
+  opacity: 0.4;
+}
+
+/* hover:text-white → dark on hover */
+html.light .hover\:text-white:hover {
+  color: #191c1d;
+}
+
+/* hover:text-black → white on dark-purple hover bg */
+html.light .hover\:text-black:hover {
+  color: #ffffff;
+}
+
+/* group-hover:text-black → white on primary hover */
+html.light .group:hover .group-hover\:text-black {
+  color: #ffffff;
+}
+
+/* White borders at various opacities → light gray borders */
+html.light .border-white\/5 {
+  border-color: rgba(25, 28, 29, 0.05);
+}
+
+html.light .border-white\/10 {
+  border-color: rgba(25, 28, 29, 0.08);
+}
+
+html.light .border-white\/20 {
+  border-color: rgba(25, 28, 29, 0.1);
+}
+
+/* Nav border in light mode */
+html.light nav.fixed {
+  border-bottom-color: rgba(25, 28, 29, 0.08);
+}
+
+/* Project card image overlay — much lighter so images are visible */
+html.light .from-\[rgba\(10\,10\,10\,0\.95\)\] {
+  --tw-gradient-from: rgba(248, 249, 250, 0.3);
+}
+
+html.light .via-\[rgba\(10\,10\,10\,0\.5\)\] {
+  --tw-gradient-via: rgba(248, 249, 250, 0.15);
+}
+
+/* Page transition overlay */
+html.light .bg-\[\#490080\]\/25 {
+  background-color: rgba(129, 39, 207, 0.12);
+}
+
+/* Toggle focus in light mode */
+html.light .theme-toggle-btn:focus-visible {
+  outline-color: #8127cf;
+}
+
+html.light .theme-toggle-btn:hover .theme-toggle-track {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 0 12px rgba(129, 39, 207, 0.3);
+}
+
+/* Smooth theme switching — fade backgrounds instead of hard cut */
+.glass-dark {
+  transition: background 0.5s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+

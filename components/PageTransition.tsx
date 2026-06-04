@@ -59,7 +59,7 @@ export default function PageTransition() {
         >
           {/* Semi-transparent purple wash — user can see scroll behind */}
           <motion.div
-            className="absolute inset-0 bg-[#490080]/25 backdrop-blur-[2px]"
+            className="absolute inset-0 bg-primary/12 backdrop-blur-[1px]"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1 }}
             exit={{ scaleY: 0 }}
@@ -97,7 +97,7 @@ export default function PageTransition() {
               delay: 0.1,
             }}
           >
-            <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border-2 border-primary/40 shadow-[0_0_60px_rgba(183,109,255,0.4)]">
+            <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border-2 border-primary/50 bg-background/80 shadow-[0_0_60px_rgba(129,39,207,0.35)]">
               <Logo size={80} className="h-full w-full" />
             </div>
           </motion.div>
